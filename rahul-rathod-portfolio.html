@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rahul Rathod — Data Scientist &amp; Full-Stack Developer</title>
+<meta name="description" content="Portfolio of Rahul Rathod, Data Scientist and aspiring Full-Stack Web Developer based in Mumbai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EEF2F6;
+    --panel:#FFFFFF;
+    --ink:#16213E;
+    --ink-soft:#51607A;
+    --teal:#0F9D96;
+    --teal-soft:#E4F4F3;
+    --amber:#F2A93B;
+    --line:#D7DEE7;
+    --radius:14px;
+    --maxw:1120px;
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img,svg{ display:block; max-width:100%; }
+  a{ color:inherit; }
+
+  :focus-visible{
+    outline:2px solid var(--teal);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:18px;
+    height:1.5px;
+    background:var(--teal);
+    display:inline-block;
+  }
+
+  h1,h2,h3{
+    font-family:var(--font-display);
+    color:var(--ink);
+    margin:0;
+    line-height:1.12;
+  }
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(238,242,246,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:16px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .brand{
+    font-family:var(--font-mono);
+    font-weight:500;
+    font-size:15px;
+    letter-spacing:0.02em;
+    text-decoration:none;
+    color:var(--ink);
+  }
+  .brand span{ color:var(--teal); }
+  nav.links{
+    display:flex;
+    gap:30px;
+    list-style:none;
+    margin:0; padding:0;
+  }
+  nav.links a{
+    text-decoration:none;
+    font-size:14.5px;
+    font-weight:500;
+    color:var(--ink-soft);
+    position:relative;
+    padding:4px 0;
+  }
+  nav.links a:hover{ color:var(--ink); }
+  nav.links a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:0;
+    width:0%;
+    height:2px;
+    background:var(--teal);
+    transition:width .25s ease;
+  }
+  nav.links a:hover::after{ width:100%; }
+
+  .nav-cta{
+    font-family:var(--font-mono);
+    font-size:13px;
+    text-decoration:none;
+    background:var(--ink);
+    color:#fff;
+    padding:9px 16px;
+    border-radius:8px;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{ background:var(--teal); }
+
+  .burger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:6px;
+  }
+  .burger span{
+    width:22px; height:2px;
+    background:var(--ink);
+    display:block;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:88px 0 70px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:48px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(38px, 5.4vw, 60px);
+    margin:18px 0 6px;
+  }
+  .hero .tagline{
+    font-size:clamp(17px, 2vw, 20px);
+    color:var(--ink-soft);
+    max-width:480px;
+    margin:14px 0 30px;
+  }
+  .hero-cta{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    font-family:var(--font-mono);
+    font-size:13.5px;
+    text-decoration:none;
+    padding:12px 22px;
+    border-radius:9px;
+    display:inline-block;
+    border:1.5px solid transparent;
+    transition:transform .15s ease, background .2s ease, color .2s ease;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-solid{ background:var(--ink); color:#fff; }
+  .btn-solid:hover{ background:var(--teal); }
+  .btn-outline{ border-color:var(--ink); color:var(--ink); }
+  .btn-outline:hover{ background:var(--ink); color:#fff; }
+
+  .hero-chart{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px 20px 16px;
+  }
+  .hero-chart .chart-label{
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    margin-bottom:10px;
+  }
+  #growthPath{
+    stroke-dasharray:900;
+    stroke-dashoffset:900;
+    animation:draw 1.8s ease forwards .3s;
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  .chart-dot{
+    opacity:0;
+    animation:fadein .5s ease forwards;
+  }
+  @keyframes fadein{ to{ opacity:1; } }
+  .milestone-labels{
+    display:flex;
+    justify-content:space-between;
+    font-family:var(--font-mono);
+    font-size:10.5px;
+    color:var(--ink-soft);
+    padding-top:6px;
+  }
+  .milestone-labels span{ max-width:70px; text-align:center; }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{ padding:70px 0; }
+  .section-head{ margin-bottom:38px; max-width:640px; }
+  .section-head h2{ font-size:clamp(26px,3.4vw,34px); margin-top:12px; }
+
+  /* reveal on scroll */
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:44px;
+    align-items:start;
+  }
+  .avatar{
+    width:170px; height:170px;
+    border-radius:50%;
+    background:linear-gradient(150deg, var(--teal), #1B2A55);
+    display:flex; align-items:center; justify-content:center;
+    color:#fff;
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:52px;
+    letter-spacing:.02em;
+    border:5px solid var(--panel);
+    box-shadow:0 10px 26px rgba(22,33,62,0.14);
+  }
+  .about-text p{ color:var(--ink-soft); font-size:16px; max-width:620px; }
+  .contact-strip{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 22px;
+    margin-top:18px;
+    font-family:var(--font-mono);
+    font-size:13.5px;
+    color:var(--ink);
+  }
+  .contact-strip a{ text-decoration:none; }
+  .contact-strip span{ color:var(--ink-soft); }
+
+  /* ---------- EXPERIENCE ---------- */
+  .exp-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:32px;
+  }
+  .exp-top{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:14px;
+  }
+  .exp-top h3{ font-size:21px; }
+  .exp-date{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    color:var(--teal);
+    background:var(--teal-soft);
+    padding:4px 10px;
+    border-radius:6px;
+    height:fit-content;
+  }
+  .exp-role{ color:var(--ink-soft); font-size:14.5px; margin-bottom:16px; }
+  .exp-card p{ color:var(--ink-soft); font-size:15.5px; }
+  .exp-divider{ border:none; border-top:1px solid var(--line); margin:22px 0; }
+  .exp-sub h4{
+    font-family:var(--font-mono);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--ink);
+    margin:0 0 8px;
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .projects-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:26px;
+  }
+  .project-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .project-card:hover{ transform:translateY(-4px); box-shadow:0 14px 30px rgba(22,33,62,0.10); }
+  .project-thumb{
+    height:170px;
+    position:relative;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(15,157,150,0.18), transparent 55%),
+      radial-gradient(circle at 80% 75%, rgba(242,169,59,0.18), transparent 55%),
+      var(--ink);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .project-thumb svg{ width:56px; height:56px; opacity:.9; }
+  .project-body{ padding:22px 22px 24px; }
+  .project-body h3{ font-size:18.5px; margin-bottom:8px; }
+  .project-body p{ color:var(--ink-soft); font-size:14.5px; margin:0 0 16px; }
+  .tag-row{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+  .tag{
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    background:var(--teal-soft);
+    color:var(--teal);
+    padding:4px 9px;
+    border-radius:6px;
+  }
+  .project-link{
+    font-family:var(--font-mono);
+    font-size:13px;
+    text-decoration:none;
+    color:var(--ink);
+    border-bottom:1.5px solid var(--teal);
+    padding-bottom:1px;
+    align-self:flex-start;
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(150px,1fr));
+    gap:14px;
+  }
+  .skill-chip{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px 14px;
+    font-family:var(--font-mono);
+    font-size:13.5px;
+    text-align:center;
+    color:var(--ink);
+  }
+
+  /* ---------- EDUCATION ---------- */
+  .timeline{
+    position:relative;
+    padding-left:28px;
+    border-left:2px solid var(--line);
+  }
+  .timeline-item{ position:relative; padding-bottom:34px; }
+  .timeline-item:last-child{ padding-bottom:0; }
+  .timeline-item::before{
+    content:"";
+    position:absolute;
+    left:-34px; top:4px;
+    width:11px; height:11px;
+    border-radius:50%;
+    background:var(--teal);
+    border:3px solid var(--paper);
+    box-shadow:0 0 0 2px var(--teal);
+  }
+  .timeline-item .exp-date{ margin-bottom:8px; display:inline-block; }
+  .timeline-item h3{ font-size:18px; margin-bottom:4px; }
+  .timeline-item p{ color:var(--ink-soft); font-size:14.5px; margin:0; }
+
+  /* ---------- CONTACT ---------- */
+  .contact-section{
+    background:var(--ink);
+    color:#fff;
+    border-radius:22px;
+    padding:52px;
+    margin:0 28px;
+    max-width:calc(var(--maxw) - 56px);
+    margin-left:auto; margin-right:auto;
+  }
+  .contact-section .section-head h2{ color:#fff; }
+  .contact-section .section-head p{ color:#B9C3D6; }
+  .contact-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:40px;
+  }
+  .contact-info-item{ margin-bottom:20px; }
+  .contact-info-item .label{
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--teal);
+    margin-bottom:4px;
+  }
+  .contact-info-item a, .contact-info-item span.val{
+    font-size:16px;
+    color:#fff;
+    text-decoration:none;
+  }
+  form.contact-form{ display:flex; flex-direction:column; gap:14px; }
+  .form-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .form-row .field{ flex:1; min-width:180px; }
+  label{
+    display:block;
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:#B9C3D6;
+    margin-bottom:6px;
+  }
+  input, textarea{
+    width:100%;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.18);
+    border-radius:8px;
+    padding:12px 13px;
+    color:#fff;
+    font-family:var(--font-body);
+    font-size:14.5px;
+  }
+  input::placeholder, textarea::placeholder{ color:#8792A8; }
+  textarea{ resize:vertical; min-height:110px; }
+  .submit-btn{
+    font-family:var(--font-mono);
+    font-size:13.5px;
+    background:var(--teal);
+    color:#0B1220;
+    border:none;
+    padding:13px 22px;
+    border-radius:9px;
+    cursor:pointer;
+    align-self:flex-start;
+    transition:background .2s ease, transform .15s ease;
+  }
+  .submit-btn:hover{ background:#12b3ab; transform:translateY(-2px); }
+  .form-note{ font-size:12.5px; color:#8792A8; margin-top:2px; }
+  #formStatus{ font-family:var(--font-mono); font-size:13px; color:var(--teal); min-height:18px; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:36px 0 46px;
+    text-align:center;
+  }
+  footer p{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin:0;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:860px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .about-grid{ grid-template-columns:1fr; }
+    .avatar{ width:120px; height:120px; font-size:38px; }
+    .projects-grid{ grid-template-columns:1fr; }
+    .contact-grid{ grid-template-columns:1fr; }
+    .contact-section{ padding:34px 24px; margin:0 16px; }
+  }
+  @media (max-width:720px){
+    nav.links{
+      position:absolute;
+      top:100%; left:0; right:0;
+      background:var(--paper);
+      border-bottom:1px solid var(--line);
+      flex-direction:column;
+      padding:14px 28px 20px;
+      gap:16px;
+      display:none;
+    }
+    nav.links.open{ display:flex; }
+    .nav-cta{ display:none; }
+    .burger{ display:flex; }
+    section{ padding:52px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">rahul<span>.</span>rathod</a>
+    <nav class="links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Let's talk</a>
+    <button class="burger" id="burgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Data Scientist · Mumbai</span>
+        <h1>Rahul Rathod</h1>
+        <p class="tagline">Empowering innovation through data, driven by people.</p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-solid">View my work</a>
+          <a href="#contact" class="btn btn-outline">Get in touch</a>
+        </div>
+      </div>
+
+      <div class="hero-chart">
+        <div class="chart-label">Learning trajectory, 2022 → 2027</div>
+        <svg viewBox="0 0 600 260" width="100%" height="auto" role="img" aria-label="Line chart showing Rahul's progression from BSc IT in 2022 to an expected MSc in Data Science in 2027">
+          <line x1="0" y1="250" x2="600" y2="250" stroke="#D7DEE7" stroke-width="1"/>
+          <path id="growthPath" d="M40,225 C110,215 150,195 210,175 C270,155 300,140 360,110 C420,80 460,70 560,35"
+                fill="none" stroke="#0F9D96" stroke-width="3.5" stroke-linecap="round"/>
+          <circle class="chart-dot" cx="40" cy="225" r="6" fill="#16213E" style="animation-delay:1.7s"/>
+          <circle class="chart-dot" cx="210" cy="175" r="6" fill="#16213E" style="animation-delay:1.9s"/>
+          <circle class="chart-dot" cx="360" cy="110" r="6" fill="#F2A93B" style="animation-delay:2.1s"/>
+          <circle class="chart-dot" cx="560" cy="35" r="6" fill="#0F9D96" style="animation-delay:2.3s"/>
+        </svg>
+        <div class="milestone-labels">
+          <span>BSc IT<br>2022</span>
+          <span>Web Dev<br>Internship</span>
+          <span>MSc Data<br>Science</span>
+          <span>AI/ML<br>Focus</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap section-head reveal">
+      <span class="eyebrow">About</span>
+      <h2>A builder at the intersection of code and data</h2>
+    </div>
+    <div class="wrap about-grid reveal">
+      <div class="avatar" aria-hidden="true">RR</div>
+      <div class="about-text">
+        <p>I'm interested in web development, AI and ML, and data science — and I enjoy picking up new programming languages along the way. On the web side, I'm working toward becoming a full-stack developer; alongside that, I'm building toward a career as a data science analyst. I also freelance on the side across a few platforms.</p>
+        <p>I have a strong interest in technology and enjoy building practical projects. One of my key projects was a musical trivia game with multiple features, which taught me a lot about application architecture, teamwork, and meeting deadlines.</p>
+        <div class="contact-strip">
+          <span><a href="mailto:rahulrathod312003@gmail.com">rahulrathod312003@gmail.com</a></span>
+          <span><a href="tel:+919136542912">+91 91365 42912</a></span>
+          <span>Mumbai, India</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap section-head reveal">
+      <span class="eyebrow">Experience</span>
+      <h2>Web Development Intern</h2>
+    </div>
+    <div class="wrap reveal">
+      <div class="exp-card">
+        <div class="exp-top">
+          <div>
+            <h3>Infotact Solutions</h3>
+            <div class="exp-role">Collaborative AI-Powered Ideation &amp; Project Management Platform</div>
+          </div>
+          <span class="exp-date">Internship</span>
+        </div>
+        <p>This platform enables teams to collaboratively brainstorm ideas, plan projects, and manage tasks in real time, with AI-driven suggestions and insights to inform decision-making. Its intelligent features facilitate effortless collaboration, automate routine tasks, and provide predictive analytics to drive project success — helping teams stay aligned, adapt quickly, and deliver high-quality results.</p>
+
+        <hr class="exp-divider">
+
+        <div class="exp-sub">
+          <h4>Conclusion</h4>
+          <p>The internship gave me valuable hands-on experience in web development and AI-powered applications. Working on real-world problems strengthened my full-stack development, problem-solving, collaboration, and agile execution skills, and reinforced my passion for data science, machine learning, AI, and full-stack development going forward.</p>
+        </div>
+
+        <hr class="exp-divider">
+
+        <div class="exp-sub">
+          <h4>Acknowledgements</h4>
+          <p>Thank you to Infotact Solutions for the opportunity to contribute to an AI-powered collaborative project, and to my mentors and teammates for their guidance and support throughout. I'm also grateful to the open-source community — and the developers behind Python, JavaScript, React, Node.js, and modern ML frameworks — whose work made a lot of this learning possible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap section-head reveal">
+      <span class="eyebrow">Projects</span>
+      <h2>Things I've built</h2>
+    </div>
+    <div class="wrap projects-grid reveal">
+
+      <div class="project-card">
+        <div class="project-thumb">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#F2A93B" stroke-width="1.6"><path d="M12 3v18M4 8l8-5 8 5M4 16l8 5 8-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="project-body">
+          <h3>Student Performance System</h3>
+          <p>A full-stack web application that streamlines academic administration and performance tracking — with role-based dashboards for admins, teachers, and students to manage attendance, exam results, and grades.</p>
+          <div class="tag-row">
+            <span class="tag">Full-Stack</span>
+            <span class="tag">Role-Based Access</span>
+            <span class="tag">Dashboards</span>
+          </div>
+          <a class="project-link" href="https://www.linkedin.com/in/rahul-rathod-b2a264397/" target="_blank" rel="noopener noreferrer">View details ↗</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0F9D96" stroke-width="1.6"><circle cx="7" cy="8" r="2.4"/><circle cx="17" cy="7" r="2"/><circle cx="12" cy="16" r="2.8"/><path d="M7 10.4V13M17 9v3" stroke-linecap="round"/></svg>
+        </div>
+        <div class="project-body">
+          <h3>Customer Segmentation</h3>
+          <p>An AI-powered module built for the Collaborative AI-Powered Ideation &amp; Project Management Platform. Applies data analysis and machine learning to identify behavior patterns and group users into meaningful segments.</p>
+          <div class="tag-row">
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Data Analysis</span>
+            <span class="tag">Python</span>
+          </div>
+          <a class="project-link" href="#contact">Ask me about it ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap section-head reveal">
+      <span class="eyebrow">Skills</span>
+      <h2>Technologies I work with</h2>
+    </div>
+    <div class="wrap skills-grid reveal">
+      <div class="skill-chip">Python</div>
+      <div class="skill-chip">JavaScript</div>
+      <div class="skill-chip">React</div>
+      <div class="skill-chip">Node.js</div>
+      <div class="skill-chip">Machine Learning</div>
+      <div class="skill-chip">Data Analysis</div>
+      <div class="skill-chip">Full-Stack Dev</div>
+      <div class="skill-chip">Agile Collaboration</div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="wrap section-head reveal">
+      <span class="eyebrow">Education</span>
+      <h2>Academic background</h2>
+    </div>
+    <div class="wrap reveal">
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="exp-date">2025 – 2027</span>
+          <h3>M.Sc. Data Science</h3>
+          <p>Postgraduate studies focused on data science, statistics, and applied machine learning.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="exp-date">2022 – 2025</span>
+          <h3>B.Sc. Information Technology</h3>
+          <p>Undergraduate foundation in programming, systems, and web technologies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-section reveal">
+      <div class="section-head">
+        <span class="eyebrow" style="color:#5FE0D6;">Contact</span>
+        <h2>Let's build something together</h2>
+        <p>Have a project, an opportunity, or just want to say hi? Send a message and I'll get back to you.</p>
+      </div>
+      <div class="contact-grid">
+        <div>
+          <div class="contact-info-item">
+            <div class="label">Email</div>
+            <a href="mailto:rahulrathod312003@gmail.com">rahulrathod312003@gmail.com</a>
+          </div>
+          <div class="contact-info-item">
+            <div class="label">Phone</div>
+            <a href="tel:+919136542912">+91 91365 42912</a>
+          </div>
+          <div class="contact-info-item">
+            <div class="label">Location</div>
+            <span class="val">Mumbai, India</span>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell me about your project or opportunity..." required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send message</button>
+          <div id="formStatus" role="status"></div>
+          <div class="form-note">This form is a static placeholder — connect it to a service like Formspree or EmailJS to receive real messages.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 Rahul Rathod · Built with intention, in Mumbai.</p>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    burger.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Contact form (static demo)
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    status.textContent = 'Thanks — your message looks ready to send once this form is connected to a backend.';
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
