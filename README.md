@@ -15,6 +15,6 @@ JavaScript
 GitHub Pages
 Google Analytics
 Live Website
-https://bhaveshrathod913611-star.github.io/portfolio/
+https://rahulrathod312003-ctrl.github.io/portfolio/
 Author
 RAHUL RATHOD
