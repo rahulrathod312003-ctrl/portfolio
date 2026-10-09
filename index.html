@@ -794,22 +794,38 @@
   // Contact form (static demo)
   
   // Contact form (static demo)
-  const form = document.getElementById('contactForm');
-  const status = document.getElementById('formStatus');
+ 
+const form = document.getElementById('contactForm');
+const status = document.getElementById('formStatus');
 
-  form.addEventListener('submit', (e) => {
+if (form) {
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    // Track a demo submission in Google Analytics
-    gtag('event', 'generate_lead', {
-      method: 'contact_form'
+    if (typeof window.gtag !== 'function') {
+      status.textContent = 'Google Analytics tag is not loaded.';
+      console.error('gtag is not available');
+      return;
+    }
+
+    window.gtag('event', 'generate_lead', {
+      method: 'contact_form',
+      debug_mode: true,
+      event_callback: function () {
+        console.log('generate_lead event sent');
+      }
     });
 
-    status.textContent =
-      'Demo submission tracked. This form is not connected to a backend yet.';
+    console.log('generate_lead event triggered');
+
+    if (status) {
+      status.textContent =
+        'Demo submission tracked. This form does not send messages yet.';
+    }
 
     form.reset();
   });
+}
 
 </body>
 </html>
