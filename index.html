@@ -792,14 +792,24 @@
   revealEls.forEach(el => io.observe(el));
 
   // Contact form (static demo)
+  
+  // Contact form (static demo)
   const form = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    status.textContent = 'Thanks — your message looks ready to send once this form is connected to a backend.';
+
+    // Track a demo submission in Google Analytics
+    gtag('event', 'generate_lead', {
+      method: 'contact_form'
+    });
+
+    status.textContent =
+      'Demo submission tracked. This form is not connected to a backend yet.';
+
     form.reset();
   });
-</script>
 
 </body>
 </html>
